@@ -8,7 +8,7 @@ function url(path) {
 }
 
 function App() {
-  const [data, setData] = useState("Hi")
+  const [data, setData] = useState("")
   useEffect(() => {
     fetch(url("/api/*"))
     .then(res => res.json())

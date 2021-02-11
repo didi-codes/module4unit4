@@ -1,11 +1,16 @@
 const dotenv = require("dotenv").config()
 const express = require("express")
 const cors = require("cors")
+const path = require('path')
 
 const app = express()
 const port = process.env.PORT || 5000
 
 app.use(cors());
+app.use(express.json)
+app.use(express.static(path.join(__dirname,"client/build", "index.html")))
+
+
 app.use("/api/*", (_, res) => {
     res.json({
         data: "Welcome To The Star Wars API"
@@ -16,6 +21,8 @@ app.use("/api/*", (_, res) => {
 app.listen(port, ()=> {
     console.log(`Server is alive on port ${port}`)
 })
+
+
 
 
 // console.log('its alive');
